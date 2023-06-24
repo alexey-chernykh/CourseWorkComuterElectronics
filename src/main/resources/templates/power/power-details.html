@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Power Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${power}">
+  <h2 th:case="null">No power found!</h2>
+  <div th:case="*">
+      <a th:href="@{/power}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/power-details/{id}(id=${power.id})}"><div class="btn activated">Product</div></a>
+      <a th:href="@{/power-info/{id}(id=${power.id})}"><div class="btn">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name" th:text="${power.fullName}"></div>
+          <img class="product_image_x2" th:src="@{'/images/power/'+${power.imageName}}" alt="power_image">
+          <div class="product_rating" th:text="'Rating: ' + ${power.rating} + '/10'"></div>
+          <div class="product_price" th:text="'Price: ' + ${power.price} + '₴'"></div>
+          <div class="product_isAvailable" th:text="${power.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${power.isAvailable} ? 'color: green' : 'color: red'"></div>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Power Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="power : ${powers}">
+        <td th:text="${power.id}"></td>
+        <td th:text="${power.fullName}"></td>
+        <td th:text="${power.company}"></td>
+        <td th:text="${power.socketName}"></td>
+        <td th:text="${power.cores}"></td>
+        <td th:text="${power.threads}"></td>
+        <td th:text="${power.frequency}"></td>
+        <td th:text="${power.maxFrequency}"></td>
+        <td th:text="${power.techProcess}"></td>
+        <td th:text="${power.tdp}"></td>
+        <td><a th:href="@{power-details/{id}(id=${power.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

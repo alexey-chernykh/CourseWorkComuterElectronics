@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ram Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${ram}">
+  <h2 th:case="null">No ram found!</h2>
+  <div th:case="*">
+      <a th:href="@{/ram}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/ram-details/{id}(id=${ram.id})}"><div class="btn">Product</div></a>
+      <a th:href="@{/ram-info/{id}(id=${ram.id})}"><div class="btn activated">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name titled" th:text="'Technical Information about' + ${ram.fullName} + ':'"></div>
+          <p th:text="'Company: ' + ${ram.company}"></p>
+          <p th:text="'Memory Value (GB): ' + ${ram.ramValue}"></p>
+          <p th:text="'Memory Frequency (MHz): ' + ${ram.ramFrequency}"></p>
+          <p th:text="'Memory Type: ' + ${ram.memoryType}"></p>
+          <p th:text="'Supply Voltage (V): ' + ${ram.supplyVoltage}"></p>
+          <p th:text="'Cooling: ' + ${ram.cooling}"></p>
+          <p th:text="'Timings: ' + ${ram.timings}"></p>
+          <p th:text="'RAM Slats Count: ' + ${ram.slatsCount}"></p>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Processor Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="processor : ${processors}">
+        <td th:text="${processor.id}"></td>
+        <td th:text="${processor.fullName}"></td>
+        <td th:text="${processor.company}"></td>
+        <td th:text="${processor.socketName}"></td>
+        <td th:text="${processor.cores}"></td>
+        <td th:text="${processor.threads}"></td>
+        <td th:text="${processor.frequency}"></td>
+        <td th:text="${processor.maxFrequency}"></td>
+        <td th:text="${processor.techProcess}"></td>
+        <td th:text="${processor.tdp}"></td>
+        <td><a th:href="@{processor-details/{id}(id=${processor.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

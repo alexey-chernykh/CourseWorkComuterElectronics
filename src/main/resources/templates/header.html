@@ -1,0 +1,35 @@
+<header>
+    <div class="header-block">
+        <a th:href="@{/home}"><img id="logo-img" th:src="@{/images/site-icon.png}" alt="logo"></a>
+    </div>
+    <div class="header-block">
+        <div class="header-info">
+            <div class="header-info-btn bold">(012) 345-67-89</div>
+            <div class="header-info-btn bold">Telegram</div>
+            <div class="header-info-btn underline">Recall Me</div>
+            <div class="header-info-btn underline">Quality Department</div>
+        </div>
+        <div class="header-info">
+            <div class="header-info-btn lighter">Delivery</div>
+            <div class="header-info-btn lighter">Payment</div>
+            <div class="header-info-btn lighter">Guarantee</div>
+            <div class="header-info-btn lighter">Contacts</div>
+        </div>
+    </div>
+    <div class="header-block">
+        <div class="auth-block">
+            <div class="profile-btn" th:text="${username}">My Profile</div>
+        </div>
+        <div class="auth-block">
+            <div th:if="${username} == 'My Profile'">
+                <a class="black" th:href="@{/login}"><div class="auth-btn underline">Login</div></a>
+                <a class="black" th:href="@{/registration}"><div class="auth-btn underline">Register</div></a>
+            </div>
+            <div th:if="${username} != 'My Profile'">
+                <a class="black" th:href="@{/profile}"><div class="auth-btn underline">Profile</div></a>
+                <a class="black" th:href="@{/wishlist}"><div class="auth-btn underline">Wishlist</div></a>
+                <a class="black" th:href="@{/logout}"><div class="auth-btn underline">Logout</div></a>
+            </div>
+        </div>
+    </div>
+</header>

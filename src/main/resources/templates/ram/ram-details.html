@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>RAM Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${ram}">
+  <h2 th:case="null">No RAM found!</h2>
+  <div th:case="*">
+      <a th:href="@{/ram}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/ram-details/{id}(id=${ram.id})}"><div class="btn activated">Product</div></a>
+      <a th:href="@{/ram-info/{id}(id=${ram.id})}"><div class="btn">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name" th:text="${ram.fullName}"></div>
+          <img class="product_image_x2" th:src="@{'/images/ram/'+${ram.imageName}}" alt="ram_image">
+          <div class="product_rating" th:text="'Rating: ' + ${ram.rating} + '/10'"></div>
+          <div class="product_price" th:text="'Price: ' + ${ram.price} + '₴'"></div>
+          <div class="product_isAvailable" th:text="${ram.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${ram.isAvailable} ? 'color: green' : 'color: red'"></div>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>RAM Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="ram : ${rams}">
+        <td th:text="${ram.id}"></td>
+        <td th:text="${ram.fullName}"></td>
+        <td th:text="${ram.company}"></td>
+        <td th:text="${ram.socketName}"></td>
+        <td th:text="${ram.cores}"></td>
+        <td th:text="${ram.threads}"></td>
+        <td th:text="${ram.frequency}"></td>
+        <td th:text="${ram.maxFrequency}"></td>
+        <td th:text="${ram.techProcess}"></td>
+        <td th:text="${ram.tdp}"></td>
+        <td><a th:href="@{ram-details/{id}(id=${ram.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

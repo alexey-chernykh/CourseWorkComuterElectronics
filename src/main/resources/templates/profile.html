@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile page</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+  <div th:replace="menu"></div>
+  <main>
+    <h2>My Profile</h2>
+    <div class="product_details" th:object="${user}">
+      <div class="product_name titled">Profile information:</div>
+      <p th:text="'First Name: ' + ${user.firstName}"></p>
+      <p th:text="'Last Name: ' + ${user.lastName}"></p>
+      <p th:text="'Email: ' + ${user.email}"></p>
+      <a th:href="@{/change-password}">Change password</a>
+    </div>
+  </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

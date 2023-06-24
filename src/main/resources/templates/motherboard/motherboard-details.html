@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Motherboard Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${motherboard}">
+  <h2 th:case="null">No motherboard found!</h2>
+  <div th:case="*">
+      <a th:href="@{/motherboards}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/motherboard-details/{id}(id=${motherboard.id})}"><div class="btn activated">Product</div></a>
+      <a th:href="@{/motherboard-info/{id}(id=${motherboard.id})}"><div class="btn">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name" th:text="${motherboard.fullName}"></div>
+          <img class="product_image_x2" th:src="@{'/images/motherboards/'+${motherboard.imageName}}" alt="motherboard_image">
+          <div class="product_rating" th:text="'Rating: ' + ${motherboard.rating} + '/10'"></div>
+          <div class="product_price" th:text="'Price: ' + ${motherboard.price} + '₴'"></div>
+          <div class="product_isAvailable" th:text="${motherboard.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${motherboard.isAvailable} ? 'color: green' : 'color: red'"></div>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Motherboard Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="motherboard : ${motherboards}">
+        <td th:text="${motherboard.id}"></td>
+        <td th:text="${motherboard.fullName}"></td>
+        <td th:text="${motherboard.company}"></td>
+        <td th:text="${motherboard.socketName}"></td>
+        <td th:text="${motherboard.cores}"></td>
+        <td th:text="${motherboard.threads}"></td>
+        <td th:text="${motherboard.frequency}"></td>
+        <td th:text="${motherboard.maxFrequency}"></td>
+        <td th:text="${motherboard.techProcess}"></td>
+        <td th:text="${motherboard.tdp}"></td>
+        <td><a th:href="@{motherboard-details/{id}(id=${motherboard.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

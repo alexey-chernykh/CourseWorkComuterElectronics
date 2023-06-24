@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Wishlist page</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/products.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+  <div th:replace="menu"></div>
+  <main>
+    <h2>Wishlist</h2>
+    <div id="products">
+      <div class="product" th:each="product, status : ${wishlist}">
+        <img class="product_image" th:src="@{'/images/'+${types[status.index]}+'/'+${product.imageName}}" alt="motherboard_image">
+        <div class="product_name" th:text="${product.fullName}"></div>
+        <div class="product_rating" th:text="'Rating: ' + ${product.rating} + '/10'"></div>
+        <div class="product_price" th:text="'Price: ' + ${product.price} + '₴'"></div>
+        <div class="product_isAvailable" th:text="${product.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${product.isAvailable} ? 'color: green' : 'color: red'"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bodoni MT";
+    font-size: 18pt;
+}
+body{
+    width: 70%;
+    margin-left:auto;
+    margin-right: auto;
+}
+header{
+    background-color: white;
+    width: auto;
+    height: 120px;
+    padding-bottom: 30px;
+}
+#logo-img{
+    width: auto;
+    height: 90px;
+    display: inline-block;
+}
+p{
+    font-size: 18pt;
+}
+.header-block{
+    display: inline-block;
+    height: 100px;
+}
+.header-info{
+    display: block;
+    width: auto;
+    height: 50px;
+    padding-bottom: 5px;
+}
+.header-info-btn{
+    display: inline-block;
+    font-size: 15pt;
+    margin: 0 20px;
+}
+.underline{
+    border-bottom: 1px solid black;
+    transition: all .3s ease-out;
+}
+.bold{
+    font-weight: bold;
+    color: black;
+    transition: all .3s ease-out;
+}
+.lighter{
+    font-weight: lighter;
+    border-bottom: 1px solid transparent;
+    transition: all .3s ease-out;
+}
+.lighter:hover{
+    font-weight: lighter;
+    border-color: black;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+.underline:hover{
+    border-color: transparent;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+.bold:hover{
+    font-weight: bold;
+    color: forestgreen;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+.my-container{
+    display: flex;
+    align-items: flex-start;
+}
+menu{
+    width: 25%;
+    padding: 10px;
+    margin: 10px;
+    position: sticky;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+.btn{
+    height: max-content;
+    text-align: left;
+    padding: 10px 40px;
+    font-size: 20pt;
+    background-color: #484f54;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+    transition: .3s all ease;
+}
+a{
+    text-decoration: none;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color:#a2c617;
+    color: white;
+    box-shadow: 5px 5px 5px #BF7A30;
+    font-size: 22pt;
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+    transition: .3s all ease;
+}
+.btn:active{
+    margin-left: 15px;
+    transition: .15s all ease;
+}
+footer{
+    height: 20px;
+    width: 100%;
+    border-top: 5px solid black;
+    margin-top: 40px;
+    text-align: center;
+    padding: 35px 0px;
+    font-style: italic;
+    font-size: 14pt;
+}
+main{
+    width: 72%;
+    padding: 10px;
+    margin: 10px;
+    border:1px solid black;
+    display: inline-block;
+}
+.search-form{
+    margin: 5px;
+}
+input[type=text].search-field {
+    background-color: white;
+    background-image: url("/images/searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 0 10px 40px;
+    display: inline-block;
+}
+input[type=text].normal-field {
+    background-color: white;
+    padding: 5px 5px 10px 5px;
+    display: inline-block;
+}
+input[type=submit] {
+    text-align: center;
+    background-color: #484f54;
+    color:white;
+    padding: 5px 15px 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: .3s all ease;
+}
+input[type=submit]:hover {
+    text-align: center;
+    background-color: #a2c617;
+    color:white;
+    padding: 5px 15px 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: .3s all ease;
+}
+.titled{
+    font-size: 20pt;
+}
+.activated{
+    background-color: #a2c617;
+}
+.btn-details{
+    height: max-content;
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 14pt;
+    background-color: #484f54;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    text-decoration: none;
+    transition: .3s all ease;
+}
+.btn-details:hover{
+    cursor: pointer;
+    background-color:#a2c617;
+    color: white;
+    box-shadow: 5px 5px 5px #BF7A30;
+    font-size: 14pt;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: .3s all ease;
+}
+.auth-block{
+    float: right;
+    padding: 20px 20px;
+}
+.profile-btn{
+    height: max-content;
+    text-align: right;
+    margin-top: 25px;
+    padding: 5px 10px;
+    background-color: #484f54;
+    border-radius: 10px;
+    font-size: 16pt;
+    color: white;
+    text-decoration: none;
+}
+.auth-btn{
+    display: block;
+    font-size: 14pt;
+    margin: 5px 10px;
+}
+.white{
+    color: white;
+}
+.black{
+    color: black;
+}

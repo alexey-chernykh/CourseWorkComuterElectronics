@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Power Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${power}">
+  <h2 th:case="null">No power found!</h2>
+  <div th:case="*">
+      <a th:href="@{/power}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/power-details/{id}(id=${power.id})}"><div class="btn">Product</div></a>
+      <a th:href="@{/power-info/{id}(id=${power.id})}"><div class="btn activated">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name titled" th:text="'Technical Information about' + ${power.fullName} + ':'"></div>
+          <p th:text="'Company: ' + ${power.company}"></p>
+          <p th:text="'Capacity (W): ' + ${power.capacity}"></p>
+          <p th:text="'Power Connectors: ' + ${power.powerConnectors}"></p>
+          <p th:text="'Sata Connectors: ' + ${power.sataConnectors}"></p>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Processor Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="processor : ${processors}">
+        <td th:text="${processor.id}"></td>
+        <td th:text="${processor.fullName}"></td>
+        <td th:text="${processor.company}"></td>
+        <td th:text="${processor.socketName}"></td>
+        <td th:text="${processor.cores}"></td>
+        <td th:text="${processor.threads}"></td>
+        <td th:text="${processor.frequency}"></td>
+        <td th:text="${processor.maxFrequency}"></td>
+        <td th:text="${processor.techProcess}"></td>
+        <td th:text="${processor.tdp}"></td>
+        <td><a th:href="@{processor-details/{id}(id=${processor.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>HDD Details</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+    <div th:replace="menu"></div>
+    <main>
+<div th:switch="${hdd}">
+  <h2 th:case="null">No hdd found!</h2>
+  <div th:case="*">
+      <a th:href="@{/hdd}"><div class="btn">Go Back</div></a>
+      <a th:href="@{/hdd-details/{id}(id=${hdd.id})}"><div class="btn">Product</div></a>
+      <a th:href="@{/hdd-info/{id}(id=${hdd.id})}"><div class="btn activated">Characteristics</div></a>
+      <div class="product_details">
+          <div class="product_name titled" th:text="'Technical Information about' + ${hdd.fullName} + ':'"></div>
+          <p th:text="'Company: ' + ${hdd.company}"></p>
+          <p th:text="'Memory Value (GB): ' + ${hdd.memoryValue}"></p>
+          <p th:text="'Form Factor: ' + ${hdd.formFactor}"></p>
+          <p th:text="'Interface: ' + ${hdd.interfaceName}"></p>
+          <p th:text="'Spindle Speed (rpm): ' + ${hdd.spindleSpeed}"></p>
+          <p th:text="'Buffer Value (MB): ' + ${hdd.bufferValue}"></p>
+      </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Processor Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="hdd : ${hdds}">
+        <td th:text="${hdd.id}"></td>
+        <td th:text="${hdd.fullName}"></td>
+        <td th:text="${hdd.company}"></td>
+        <td th:text="${hdd.socketName}"></td>
+        <td th:text="${hdd.cores}"></td>
+        <td th:text="${hdd.threads}"></td>
+        <td th:text="${hdd.frequency}"></td>
+        <td th:text="${hdd.maxFrequency}"></td>
+        <td th:text="${hdd.techProcess}"></td>
+        <td th:text="${hdd.tdp}"></td>
+        <td><a th:href="@{hdd-details/{id}(id=${hdd.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+    </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

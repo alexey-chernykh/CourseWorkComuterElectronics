@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Processor List</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="my-container">
+  <div th:replace="menu"></div>
+  <main>
+<div th:switch="${processors}">
+  <h2 th:case="null">No processors found!</h2>
+  <div th:case="*">
+    <h2 style="margin: 5px">Processors</h2>
+    <form method="get" action="processor-search" class="search-form">
+      <input class="search-field" type="text" name="keyword" placeholder="search processors" />
+      <input type="submit" name="submit" value="Search" />
+    </form>
+    <div id="products">
+      <div class="product" th:each="processor : ${processors}">
+        <img class="product_image" th:src="@{'/images/processors/'+${processor.imageName}}" alt="processor_image">
+        <div class="product_name" th:text="${processor.fullName}"></div>
+        <div class="product_rating" th:text="'Rating: ' + ${processor.rating} + '/10'"></div>
+        <div class="product_price" th:text="'Price: ' + ${processor.price} + '₴'"></div>
+        <div class="product_isAvailable" th:text="${processor.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${processor.isAvailable} ? 'color: green' : 'color: red'"></div>
+        <div class="product_details"><a th:href="@{processor-details/{id}(id=${processor.id})}"><div class="btn-details">Details</div></a></div>
+      </div>
+    </div>
+    <!--<table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Processor Name</th>
+        <th>Company</th>
+        <th>Socket Name</th>
+        <th>Cores (N)</th>
+        <th>Threads (N)</th>
+        <th>Frequency (MHz)</th>
+        <th>Max Frequency (MHz)</th>
+        <th>Tech Process (nm)</th>
+        <th>TDP (W)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="processor : ${processors}">
+        <td th:text="${processor.id}"></td>
+        <td th:text="${processor.fullName}"></td>
+        <td th:text="${processor.company}"></td>
+        <td th:text="${processor.socketName}"></td>
+        <td th:text="${processor.cores}"></td>
+        <td th:text="${processor.threads}"></td>
+        <td th:text="${processor.frequency}"></td>
+        <td th:text="${processor.maxFrequency}"></td>
+        <td th:text="${processor.techProcess}"></td>
+        <td th:text="${processor.tdp}"></td>
+        <td><a th:href="@{processor-details/{id}(id=${processor.id})}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>-->
+  </div>
+</div>
+  </main>
+</div>
+<div th:replace="footer"></div>
+</body>
+</html>

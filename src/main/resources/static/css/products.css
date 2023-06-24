@@ -1,0 +1,43 @@
+#products{
+    width: auto;
+    height: auto;
+    background-color: white;
+}
+.product{
+    width: auto;
+    margin: 10px;
+    height: 200px;
+    background-color: white;
+    display: inline-block;
+}
+.product_image{
+    width: 180px;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+.product_image_x2{
+    width: 340px;
+    height: auto;
+}
+.product_name{
+    font-size: 12pt;
+    display: block;
+}
+.product_rating{
+    font-size: 12pt;
+    display: block;
+}
+.product_price{
+    font-size: 12pt;
+    display: block;
+}
+.product_isAvailable{
+    font-size: 12pt;
+    display: block;
+}
+.product_details{
+    font-size: 12pt;
+    color: black;
+    display: block;
+}
