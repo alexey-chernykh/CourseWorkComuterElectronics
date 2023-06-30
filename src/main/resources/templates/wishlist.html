@@ -20,6 +20,7 @@
         <div class="product_rating" th:text="'Rating: ' + ${product.rating} + '/10'"></div>
         <div class="product_price" th:text="'Price: ' + ${product.price} + '₴'"></div>
         <div class="product_isAvailable" th:text="${product.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${product.isAvailable} ? 'color: green' : 'color: red'"></div>
+        <a th:href="@{/wishlist-remove/{id}(id=${ids[status.index]})}">Remove</a>
       </div>
     </div>
   </main>

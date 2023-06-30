@@ -23,6 +23,7 @@
           <div class="product_rating" th:text="'Rating: ' + ${videocard.rating} + '/10'"></div>
           <div class="product_price" th:text="'Price: ' + ${videocard.price} + '₴'"></div>
           <div class="product_isAvailable" th:text="${videocard.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${videocard.isAvailable} ? 'color: green' : 'color: red'"></div>
+          <a th:href="@{/wishlist-add/{id}/{type}(id=${videocard.id},type=${videocard.toString()})}">Add to wishlist</a>
       </div>
     <!--<table>
       <thead>

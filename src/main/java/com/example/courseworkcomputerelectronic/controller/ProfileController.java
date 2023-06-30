@@ -76,48 +76,66 @@ public class ProfileController {
         CheckAuth.getInstance().check(model);
         Object products[] = new Object[CheckAuth.getInstance().getUserObj(model, userService).getProducts().size()];
         Object product_types[] = new Object[CheckAuth.getInstance().getUserObj(model, userService).getProducts().size()];
+        Object product_ids[] = new Object[CheckAuth.getInstance().getUserObj(model, userService).getProducts().size()];
         for (int i = 0; i<products.length; i++) {
             switch (((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductType()){
                 case "processors":
                     products[i] = processorService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "processors";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "motherboards":
                     products[i] = motherboardService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "motherboards";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "videocards":
                     products[i] = videocardService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "videocards";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "ram":
                     products[i] = ramService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "ram";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "ssd":
                     products[i] = ssdService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "ssd";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "hdd":
                     products[i] = hddService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "hdd";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
                 case "power":
                     products[i] = powerService.findById(((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getProductId());
                     product_types[i] = "power";
+                    product_ids[i] = ((Product)(CheckAuth.getInstance().getUserObj(model, userService).getProducts().toArray()[i])).getId();
                     break;
             }
         }
 
         model.addAttribute("wishlist", products);
         model.addAttribute("types", product_types);
+        model.addAttribute("ids", product_ids);
         return "wishlist";
     }
     @GetMapping("/wishlist-add/{id}/{type}")
     public String wishlistAdd(@PathVariable("id") Long id, @PathVariable("type") String type, Model model){
         CheckAuth.getInstance().check(model);
-        productService.save(new Product(id, type));
-        CheckAuth.getInstance().getUserObj(model, userService).getProducts().addAll(productService.findByProductIdAndProductType(id, type));
+        Product pr = new Product(id, type);
+        productService.save(pr);
+        CheckAuth.getInstance().getUserObj(model, userService).getProducts().add(pr);
+        userService.saveUser(CheckAuth.getInstance().getUserObj(model, userService));
+        return "redirect:/wishlist";
+    }
+    @GetMapping("/wishlist-remove/{id}")
+    public String wishlistRemove(@PathVariable("id") Long id,Model model){
+        CheckAuth.getInstance().check(model);
+        CheckAuth.getInstance().getUserObj(model, userService).getProducts().remove(productService.findById(id));
+        productService.deleteById(id);
         userService.saveUser(CheckAuth.getInstance().getUserObj(model, userService));
         return "redirect:/wishlist";
     }

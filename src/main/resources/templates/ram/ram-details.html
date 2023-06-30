@@ -23,6 +23,7 @@
           <div class="product_rating" th:text="'Rating: ' + ${ram.rating} + '/10'"></div>
           <div class="product_price" th:text="'Price: ' + ${ram.price} + '₴'"></div>
           <div class="product_isAvailable" th:text="${ram.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${ram.isAvailable} ? 'color: green' : 'color: red'"></div>
+          <a th:href="@{/wishlist-add/{id}/{type}(id=${ram.id},type=${ram.toString()})}">Add to wishlist</a>
       </div>
     <!--<table>
       <thead>

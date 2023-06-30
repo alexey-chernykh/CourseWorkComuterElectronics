@@ -23,6 +23,7 @@
           <div class="product_rating" th:text="'Rating: ' + ${hdd.rating} + '/10'"></div>
           <div class="product_price" th:text="'Price: ' + ${hdd.price} + '₴'"></div>
           <div class="product_isAvailable" th:text="${hdd.isAvailable} ? 'AVAILABLE' : 'OUT OF STOCK'" th:style="${hdd.isAvailable} ? 'color: green' : 'color: red'"></div>
+          <a th:href="@{/wishlist-add/{id}/{type}(id=${hdd.id},type=${hdd.toString()})}">Add to wishlist</a>
       </div>
     <!--<table>
       <thead>
